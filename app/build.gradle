@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.kanawish.arcore"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    // Sceneform libraries use language constructs from Java 8.
+    // Add these compile options if targeting minSdkVersion < 26.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // Framework / Google™ dependencies
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.8.0"
+    // Alternatively, use ArSceneView without the UX dependency.
+    // implementation "com.google.ar.sceneform:core:1.8.0"
+
+    // 3rd party dependencies
+    implementation "com.jakewharton.timber:timber:4.7.0" // https://github.com/JakeWharton/timber/blob/master/CHANGELOG.md
+
+    implementation "io.reactivex.rxjava2:rxjava:2.1.12" // https://github.com/ReactiveX/RxJava/blob/2.x/CHANGES.md
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2" // https://github.com/ReactiveX/RxAndroid/blob/2.x/CHANGES.md
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0" // https://github.com/ReactiveX/RxKotlin/releases
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0' // https://github.com/JakeWharton/RxRelay/blob/master/CHANGELOG.md
+
+    implementation "com.squareup.okio:okio:1.17.2"
+
+    // Testing dependencies
+    testImplementation 'junit:junit:4.12'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
+
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+sceneform.asset(
+        'sampledata/castle-nathan/model.gltf',
+        'default',
+        'sampledata/castle-nathan/model.sfa',
+        'src/main/res/raw/castle'
+)
+
+sceneform.asset(
+        'sampledata/models/andy.obj',
+        'default',
+        'sampledata/models/andy.sfa',
+        'src/main/res/raw/andy'
+)
+
+sceneform.asset('sampledata/01_curiosity_rover/model.gltf',
+        'default',
+        'sampledata/01_curiosity_rover/model.sfa',
+        'src/main/res/raw/curiosity')
+
+sceneform.asset('sampledata/02_mars_habitat/model.gltf',
+        'default',
+        'sampledata/02_mars_habitat/model.sfa',
+        'src/main/res/raw/habitat')
+
+sceneform.asset('sampledata/03_solar_system/model.gltf',
+        'default',
+        'sampledata/03_solar_system/model.sfa',
+        'src/main/res/raw/solar_system')
+
+
+sceneform.asset('sampledata/damagedHelmet/DamagedHelmet.gltf',
+        'sampledata/damagedHelmet/',
+        'sampledata/damagedHelmet/DamagedHelmet.sfa',
+        'src/main/res/raw/damaged_helmet')

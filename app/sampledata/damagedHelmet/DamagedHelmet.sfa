@@ -1,0 +1,117 @@
+{
+  materials: [
+    {
+      name: 'Material_MR',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Default_albedo',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: 'Default_normal',
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: 'Default_metalRoughness',
+        },
+        {
+          occlusion: 'Default_AO',
+        },
+        {
+          emissiveFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          emissive: 'Default_emissive',
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/damagedHelmet/DamagedHelmet.gltf',
+    name: 'DamagedHelmet',
+    recenter: 'root',
+    scale: 0.1,
+  },
+  samplers: [
+    {
+      file: 'sampledata/damagedHelmet/Default_AO.jpg',
+      name: 'Default_AO',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'Default_AO.jpg',
+    },
+    {
+      file: 'sampledata/damagedHelmet/Default_albedo.jpg',
+      name: 'Default_albedo',
+      pipeline_name: 'Default_albedo.jpg',
+    },
+    {
+      file: 'sampledata/damagedHelmet/Default_metalRoughness.jpg',
+      name: 'Default_metalRoughness',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'Default_metalRoughness.jpg',
+    },
+    {
+      file: 'sampledata/damagedHelmet/Default_normal.jpg',
+      name: 'Default_normal',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'Default_normal.jpg',
+    },
+    {
+      file: 'sampledata/damagedHelmet/Default_emissive.jpg',
+      name: 'Default_emissive',
+      pipeline_name: 'Default_emissive.jpg',
+    },
+  ],
+  version: '0.54:2',
+}
