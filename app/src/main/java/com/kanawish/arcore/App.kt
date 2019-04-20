@@ -1,7 +1,9 @@
 package com.kanawish.arcore
 
 import android.app.Application
+import com.google.ar.sceneform.Node
 import timber.log.Timber
+import java.util.*
 
 class App : Application() {
     override fun onCreate() {
@@ -18,4 +20,16 @@ class App : Application() {
                 BuildConfig.APPLICATION_ID
         )
     }
+}
+
+data class AndroidMiniState(
+    val name: String,
+    val description: String,
+    val inCart: Boolean = false,
+    val faved: Boolean = false,
+    val price: Int = 3
+)
+
+object DummyAppState {
+    val storeInventory:WeakHashMap<Node,AndroidMiniState> = WeakHashMap()
 }

@@ -1,0 +1,169 @@
+{
+    "asset": {
+        "version": "2.0",
+        "generator": "Open Asset Import Library (assimp v3.1.77322876)"
+    },
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 6912,
+            "type": "VEC3",
+            "max": [
+                0.8330923914909363,
+                1.0,
+                0.5433211326599121
+            ],
+            "min": [
+                -0.8330923914909363,
+                -1.0,
+                -0.5433211326599121
+            ]
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 6912,
+            "type": "VEC3",
+            "max": [
+                0.9999809861183167,
+                1.0,
+                0.9999809861183167
+            ],
+            "min": [
+                -0.9999809861183167,
+                -1.0,
+                -0.9999809861183167
+            ]
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 6912,
+            "type": "SCALAR",
+            "max": [
+                6911.0
+            ],
+            "min": [
+                0.0
+            ]
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 179712,
+            "uri": "goldy.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 82944,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 82944,
+            "byteLength": 82944,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 165888,
+            "byteLength": 13824,
+            "target": 34963
+        }
+    ],
+    "images": [
+        {
+            "uri": "andy.png"
+        }
+    ],
+    "materials": [
+        {
+            "name": "1001",
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "baseColorFactor": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "metallicFactor": 0.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Andy_GEO_1001",
+            "primitives": [
+                {
+                    "mode": 4,
+                    "material": 0,
+                    "indices": 2,
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1
+                    }
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "matrix": [
+                0.1035299301147461,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.1035299301147461,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.1035299301147461,
+                0.0,
+                0.0,
+                5.103529930114746,
+                0.0,
+                1.0
+            ],
+            "children": [
+                1,
+                2
+            ]
+        },
+        {
+            "name": "g default"
+        },
+        {
+            "name": "g Andy_GEO",
+            "mesh": 0
+        }
+    ],
+    "samplers": [
+        {}
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "source": 0,
+            "sampler": 0
+        }
+    ],
+    "scene": 0
+}

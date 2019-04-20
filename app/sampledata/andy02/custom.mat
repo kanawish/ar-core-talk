@@ -1,0 +1,22 @@
+material {
+    name: "Custom material",
+    parameters: [
+        {
+            type: "float3",
+            name: "andyColor"
+        }
+    ],
+    requires: [
+        "position"
+    ],
+    shadingModel: "lit",
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        material.baseColor.rgb = materialParams.andyColor.rgb;
+        material.metallic = 1.0;
+        material.roughness = 0.5;
+    }
+}

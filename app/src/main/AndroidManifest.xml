@@ -26,10 +26,10 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ArHelloSceneformActivity"
+            android:name=".ArPopUpShopActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:label="Hello Kotlin Demo"
+            android:label="Andy Pop Up Shop"
             android:screenOrientation="locked"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -38,13 +38,8 @@
             </intent-filter>
         </activity>
 
-        <!--
-        This tag indicates that this application requires ARCore. This results in the
-        application only being visible in the Google Play Store on devices that support
-        ARCore.
-        -->
         <activity
-            android:name=".ArUiActivity"
+            android:name=".ArStashedCodeActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:label="UX Demo"
@@ -55,6 +50,11 @@
             </intent-filter>
         </activity>
 
+        <!--
+        This tag indicates that this application requires ARCore. This results in the
+        application only being visible in the Google Play Store on devices that support
+        ARCore.
+        -->
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />

@@ -1,0 +1,32 @@
+material {
+    parameters : [
+        {
+           type : float4,
+           name : albedo
+        },
+        {
+           type      : sampler2d,
+           format    : float,
+           precision : high,
+           name      : roughness
+        },
+        {
+            type : float2,
+            name : metallicReflectance
+        }
+    ],
+    requires : [
+        uv0
+    ],
+    shadingModel : lit,
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        material.baseColor = materialParams.albedo;
+        material.roughness = texture(materialParams_roughness, getUV0());
+        material.metallic = materialParams.metallicReflectance.x;
+        material.reflectance = materialParams.metallicReflectance.y;
+    }
+}

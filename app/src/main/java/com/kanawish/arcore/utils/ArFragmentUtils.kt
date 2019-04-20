@@ -5,40 +5,46 @@ import com.google.ar.core.AugmentedImage
 import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.core.TrackingState
-import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.Node
 import com.google.ar.sceneform.Scene
-import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.ModelRenderable
-import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.TransformableNode
 import io.reactivex.Observable
 import timber.log.Timber
 
-/**
- * TODO: Probably should remove this one.
- */
-fun ArFragment.buildTapArPlaneListener(model: ModelRenderable, label: ViewRenderable) {
-    setOnTapArPlaneListener { hitResult, plane, motionEvent ->
-        // Create the Anchor and AnchorNode.
-        val anchorNode = AnchorNode(hitResult.createAnchor())
-        // Attach node to scene.
-        anchorNode.setParent(arSceneView.scene)
 
-        // Create the transformable andy and add it to the anchor.
-        val andy = TransformableNode(transformationSystem)
-        andy.setParent(anchorNode)
-        andy.renderable = model
-        andy.select()
+/*
+    Planes Diagram
+    - Outlines `Plane` types
+    - Outlines where touch events are processed.
 
-        Node().apply {
-            setParent(andy)
-            renderable = label
-            localPosition = Vector3(0f, .25f, 0f)
-        }
-    }
+@startuml
+
+hide empty members
+
+namespace arcore {
+class Plane
+enum Type {
+HORIZONTAL_DOWNWARD_FACING
+HORIZONTAL_UPWARD_FACING
+VERTICAL
 }
+Plane o- Type
+}
+
+namespace sceneform {
+class ArSceneView
+class BaseArFragment {
++onPeekTouch(htr,me)
++setOnTapArPlaneListener(l)
+}
+class ArFragment
+BaseArFragment *-right- ArSceneView
+BaseArFragment <|-- ArFragment
+}
+
+arcore.Plane .[hidden]. sceneform.BaseArFragment
+
+@enduml
+*/
 
 /**
  * @param hitResult The ARCore hit result that occurred when tapping the plane.
@@ -65,6 +71,7 @@ fun ArFragment.arPlaneTaps():Observable<PlaneTap> {
         emitter.setCancellable { setOnTapArPlaneListener(null) }
     }
 }
+
 
 /**
  * This builds an Observable that will return collections of augmented images
@@ -106,38 +113,3 @@ fun ArFragment.trackedAugmentedImages() : Observable<Collection<AugmentedImage>>
     }
 }
 
-/*
-
-@startuml
-
-hide empty members
-
-namespace arcore {
-    class Plane
-    enum Type {
-        HORIZONTAL_DOWNWARD_FACING
-        HORIZONTAL_UPWARD_FACING
-        VERTICAL
-    }
-    Plane o- Type
-}
-
-namespace sceneform {
-    class ArSceneView
-    class BaseArFragment {
-        +onPeekTouch(htr,me)
-        +setOnTapArPlaneListener(l)
-    }
-    class ArFragment
-    BaseArFragment *-right- ArSceneView
-    BaseArFragment <|-- ArFragment
-}
-
-arcore.Plane .[hidden]. sceneform.BaseArFragment
-
-@enduml
-
-@startuml
-@enduml
-
- */

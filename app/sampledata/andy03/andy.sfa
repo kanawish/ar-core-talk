@@ -1,0 +1,36 @@
+{
+  materials: [
+    {
+      name: 'unlit_material',
+      parameters: [
+        {
+          andyColor: [
+            1,
+            1,
+            0,
+          ],
+        },
+      ],
+      source: 'sampledata/andy03/custom.mat',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/andy03/andy.obj',
+    name: 'andy',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/andy03/andy.png',
+      name: 'andy',
+      pipeline_name: 'andy.png',
+    },
+  ],
+  version: '0.54:2',
+}

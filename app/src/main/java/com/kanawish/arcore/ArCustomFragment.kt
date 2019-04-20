@@ -10,6 +10,22 @@ import com.google.ar.core.Config
 import com.google.ar.core.Session
 import com.google.ar.sceneform.ux.ArFragment
 
+/* ArFragment inheritance / overrides diagram
+@startuml
+hide empty members
+namespace sceneform {
+    class BaseArFragment
+    class ArFragment {
+        +isArRequired()
+        +getAdditionalPermissions()
+        +getSessionConfiguration()
+        +getSessionFeatures()
+    }
+    BaseArFragment <|-- ArFragment
+}
+@enduml
+*/
+
 /**
  * # Sceneform
  *
@@ -28,15 +44,6 @@ import com.google.ar.sceneform.ux.ArFragment
  */
 class ArCustomFragment : ArFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // NOTE: Convenient spot to turn on/off features as needed.
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     /**
      * We initialize the returned configuration here.
      *
@@ -52,10 +59,8 @@ class ArCustomFragment : ArFragment() {
                 .let { inputStream ->
                     AugmentedImageDatabase.deserialize(session, inputStream)
                 }
-
-            // Normally off, causes issues with quality, but makes smaller images trackable.
-            config.focusMode = Config.FocusMode.AUTO
         }
     }
 
 }
+

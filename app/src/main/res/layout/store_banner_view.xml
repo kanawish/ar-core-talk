@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/rounded_dark_grey_bg"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/bannerHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:background="#0000"
+        android:gravity="center|top"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:text="🌟 🤖 Android Pop-Up Shop 🛍 🌟"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/openCartButton"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Checkout 🛒"
+        />
+
+</LinearLayout>
