@@ -7,7 +7,6 @@ import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.BaseArFragment
 import com.google.ar.sceneform.ux.BaseArFragment.OnTapArPlaneListener
 import com.google.ar.sceneform.ux.TransformableNode
 import com.kanawish.arcore.utils.arPlaneTaps
@@ -40,12 +39,20 @@ class ArStashedCodeActivity : AppCompatActivity() {
 
         initAugmentedImageTracking()
     }
-
+fun foo () {
+    arFragment.setOnTapArPlaneListener { hitResult, _, _ ->
+        disposables += Singles.zip(
+                singleModelRenderable(R.raw.andy),
+                singleViewRenderable(R.layout.price_tag)
+            )
+            .subscribe { (andy, card) ->
+            }
+    }
+}
     private fun initOnTapPlane() {
-        disposables += Singles
-            .zip(
-                    singleModelRenderable(R.raw.andy),
-                    singleViewRenderable(R.layout.info_card_view)
+        disposables += Singles.zip(
+                singleModelRenderable(R.raw.andy),
+                singleViewRenderable(R.layout.price_tag)
             )
             .subscribe { (andy, card) ->
                 disposables += arFragment.arPlaneTaps()

@@ -69,7 +69,8 @@ class ArPopUpShopActivity : AppCompatActivity() {
             .findFragmentById(R.id.ux_fragment) as ArCustomFragment
 
         // Load the Andy 3D model
-        disposables += singleViewRenderable(R.layout.selected_card_view).subscribe { selected ->
+        disposables +=
+        singleViewRenderable(R.layout.selected_card_view).subscribe { selected ->
             initializeStore(selected)
         }
 
@@ -98,15 +99,14 @@ class ArPopUpShopActivity : AppCompatActivity() {
 
             val mod = storeInventory.size % colors.size
 
-            Singles
-                .zip(
-                        singleModelRenderable(R.raw.andy02),
-                        singleViewRenderable(R.layout.info_card_view)
-                )
-                .subscribe { (customAndy, infoView) ->
+            Singles.zip(
+//                    singleModelRenderable(R.raw.andy),
+                    singleModelRenderable(R.raw.andy02),
+                    singleViewRenderable(R.layout.price_tag)
+            )
+                .subscribe { (customAndy, priceTag) ->
                     customAndy.getMaterial().setFloat3("andyColor", colors[mod])
-                    val modelNode = hitResult
-                        .createAnchor()
+                    val modelNode = hitResult.createAnchor()
                         .buildAndyInstance(
                                 customAndy,
                                 selectedNode
@@ -120,18 +120,18 @@ class ArPopUpShopActivity : AppCompatActivity() {
 
                     // Will occur once the new card view instance is built.
                     storeInventory[modelNode]?.also { newMini ->
-                        infoView.view.findViewById<TextView>(R.id.priceLabel).text =
+                        priceTag.view.findViewById<TextView>(R.id.priceLabel).text =
                             "${newMini.price}$"
                     }
 
                     // A permanent label node - using Renderable.buildNode()
-                    val infoNode = Node()
-                    infoView.isShadowCaster = false
-                    infoView.sizer = FixedWidthViewSizer(0.1f)
-                    infoNode.renderable = infoView
-                    infoNode.localRotation = Quaternion.axisAngle(Vector3(1f, 0f, 0f), -90f)
-                    infoNode.localPosition = Vector3(0f, 0.02f, 0.2f)
-                    modelNode.addChild(infoNode)
+                    val priceTagNode = Node()
+                    priceTag.isShadowCaster = false
+                    priceTag.sizer = FixedWidthViewSizer(0.1f) // 10cm max width
+                    priceTagNode.renderable = priceTag
+                    priceTagNode.localRotation = Quaternion.axisAngle(Vector3(1f, 0f, 0f), -90f)
+                    priceTagNode.localPosition = Vector3(0f, 0.02f, 0.2f)
+                    modelNode.addChild(priceTagNode)
                 }
 
         }
@@ -188,9 +188,10 @@ class ArPopUpShopActivity : AppCompatActivity() {
         disposables += Maybes
             .zip(
                 singleViewRenderable(R.layout.store_banner_view).toMaybe(),
+                singleModelRenderable(R.raw.andy03).toMaybe(),
                 trackedAugmentedImage.firstElement()
             )
-            .subscribe { (viewRenderable, augmentedImage) ->
+            .subscribe { (viewRenderable, andy03, augmentedImage) ->
                 Timber.d("Augmented Image detected.")
 
                 // Init View Renderable
@@ -208,13 +209,17 @@ class ArPopUpShopActivity : AppCompatActivity() {
 
                 // Assign Renderable to a node 60cm above the augmented image anchor.
                 val storefrontNode = Node().apply {
-                    name = viewRenderable.id.toString()
                     renderable = viewRenderable
                     localPosition = Vector3(0f,0.4f,-1f)
                 }
 
                 // Assign store UX ndoe to the anchor node.
                 anchorNode.addChild(storefrontNode)
+
+                val goldyNode = Node().apply {
+                    renderable = andy03
+                }
+//                anchorNode.addChild(goldyNode)
 
                 // Add Anchor Node to the scene.
                 arFragment.arSceneView.scene.addChild(anchorNode)

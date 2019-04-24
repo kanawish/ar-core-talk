@@ -4,11 +4,8 @@
       name: 'unlit_material',
       parameters: [
         {
-          andyColor: [
-            1,
-            1,
-            0,
-          ],
+          // andyColor: 'andy',
+          metalx:'metalx',
         },
       ],
       source: 'sampledata/andy03/custom.mat',
@@ -26,6 +23,10 @@
     recenter: 'root',
   },
   samplers: [
+    {
+       file: 'sampledata/andy03/metal.png',
+       name: 'metalx',
+    },
     {
       file: 'sampledata/andy03/andy.png',
       name: 'andy',
