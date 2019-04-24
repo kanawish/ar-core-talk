@@ -5,10 +5,8 @@
       parameters: [
         {
           andyColor: 'andy',
-        },
-        {
           metalColor: 'metal',
-        }
+        },
       ],
       source: 'sampledata/andy03/custom.mat',
     },
@@ -31,8 +29,8 @@
       pipeline_name: 'andy.png',
     },
     {
-       file: 'sampledata/andy03/metal_02.png',
-       name: 'metal'
+       file: 'sampledata/andy03/metal.png',
+       name: 'metal',
     },
   ],
   version: '0.54:2',

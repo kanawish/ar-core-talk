@@ -1,13 +1,13 @@
 material {
     name: "Custom material",
     parameters: [
-//        {
-//            type: "sampler2d",
-//            name: "andyColor"
-//        },
         {
             type: "sampler2d",
-            name: "metalx"
+            name: "andyColor"
+        },
+        {
+            type: "sampler2d",
+            name: "metalColor"
         }
     ],
     requires: [
@@ -19,15 +19,15 @@ material {
 fragment {
     void material(inout MaterialInputs material) {
         prepareMaterial(material);
-        // float3 texSample = texture(materialParams_andyColor, getUV0()).rgb;
-        float3 metalx = 1.0 - texture(materialParams_metalx, getUV0()).rgb;
+        float3 texSample = texture(materialParams_andyColor, getUV0()).rgb;
+        float metal = texture(materialParams_metalColor, getUV0()).r;
 
         // Fade between the base color and a gold-ish metal
-        // float3 colorA = texSample;
+        float3 colorA = texSample;
         float3 colorB = float3(1.00, 0.85, 0.57);
-        material.baseColor.rgb = metalx;    // mix(colorA, colorB, metal);
+        material.baseColor.rgb = mix(colorA, colorB, metal);
 
-        //material.metallic = metalx;
-        //material.roughness = 1.0 - metalx;
+        material.metallic = metal;
+        material.roughness = 1.0 - metal;
     }
 }

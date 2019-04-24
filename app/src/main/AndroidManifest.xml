@@ -26,6 +26,19 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
+            android:name=".ArSimpleActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="AR Simple Activity"
+            android:screenOrientation="locked"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".ArPopUpShopActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
@@ -34,7 +47,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
