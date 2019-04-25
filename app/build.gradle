@@ -87,3 +87,8 @@ sceneform.asset('sampledata/andy03/andy.obj',
         'sampledata/andy03/custom.mat',
         'sampledata/andy03/andy.sfa',
         'src/main/res/raw/andy03')
+
+sceneform.asset('sampledata/andy-machinery/andy-machinery.gltf',
+        'default',
+        'sampledata/andy-machinery/andy-machinery.sfa',
+        'src/main/assets/andy-machinery')

@@ -1,0 +1,103 @@
+{
+  materials: [
+    {
+      name: 'unlit_material',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'unlit_material_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: 'unlit_material_normal',
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: 'unlit_material_occlusionRoughnessMetallic',
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/andy-machinery/andy-machinery.gltf',
+    name: 'andy-machinery',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/andy-machinery/unlit_material_baseColor.png',
+      name: 'unlit_material_baseColor',
+      pipeline_name: 'unlit_material_baseColor.png',
+    },
+    {
+      file: 'sampledata/andy-machinery/unlit_material_normal.png',
+      name: 'unlit_material_normal',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'unlit_material_normal.png',
+    },
+    {
+      file: 'sampledata/andy-machinery/unlit_material_occlusionRoughnessMetallic.png',
+      name: 'unlit_material_occlusionRoughnessMetallic',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'unlit_material_occlusionRoughnessMetallic.png',
+    },
+  ],
+  version: '0.54:2',
+}

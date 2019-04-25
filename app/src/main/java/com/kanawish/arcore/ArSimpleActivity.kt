@@ -1,31 +1,15 @@
 package com.kanawish.arcore
 
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.ar.core.Anchor
-import com.google.ar.core.TrackingState
 import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.Node
-import com.google.ar.sceneform.NodeParent
-import com.google.ar.sceneform.math.Quaternion
-import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.FixedWidthViewSizer
 import com.google.ar.sceneform.rendering.ModelRenderable
-import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.TransformableNode
-import com.kanawish.arcore.DummyAppState.storeInventory
 import com.kanawish.arcore.utils.checkIsSupportedDeviceOrFinish
-import com.kanawish.arcore.utils.singleModelRenderable
-import com.kanawish.arcore.utils.singleViewRenderable
-import com.kanawish.arcore.utils.trackedAugmentedImages
-import io.reactivex.Observable
+import com.kanawish.arcore.utils.toSingle
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.Maybes
-import io.reactivex.rxkotlin.Singles
 import io.reactivex.rxkotlin.plusAssign
-import timber.log.Timber
 
 class ArSimpleActivity : AppCompatActivity() {
 
@@ -47,11 +31,20 @@ class ArSimpleActivity : AppCompatActivity() {
 
         // Load the fancy Andy 3D model
         disposables +=
-        singleModelRenderable(R.raw.andy03).subscribe { goldy ->
-            initTouchPlacement(goldy)
+        singleModelRenderable("andy-machinery.sfb").subscribe { andy ->
+            initTouchPlacement(andy)
         }
 
     }
+
+    private fun singleModelRenderable(assetFileName: String) = ModelRenderable
+        .builder()
+        .setSource(
+                this,
+                Uri.parse("file:///android_asset/$assetFileName")
+        )
+        .build()
+        .toSingle()
 
     private fun initTouchPlacement(model: ModelRenderable) {
         arFragment.setOnTapArPlaneListener { hitResult, plane, _ ->

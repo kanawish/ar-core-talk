@@ -50,7 +50,7 @@ import java.util.concurrent.Future
  * This is a small utility function to convert these `Future` instances
  * to RxJava friendly `Single` instances.
  */
-private fun <T> Future<T>.toSingle() =
+fun <T> Future<T>.toSingle() =
     Single.fromFuture(this)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
