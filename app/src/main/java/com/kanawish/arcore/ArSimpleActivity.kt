@@ -57,7 +57,6 @@ class ArSimpleActivity : AppCompatActivity() {
             modelNode.renderable = model
             modelNode.setParent(anchorNode)
         }
-
     }
 
     override fun onPause() {
